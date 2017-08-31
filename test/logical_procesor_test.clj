@@ -2,13 +2,25 @@
     (:require [clojure.test :refer :all]
               [logical_procesor :refer :all]))
 
-(deftest check-the-type-of-facts-list
+(deftest check-mock-the-type-of-facts-list
   (testing "Tests the mock facts list"
-           (is true (instance? (type get-facts-map) java.util.Map))
+           (is true (instance? (type get-mock-facts-map) java.util.Map))
   ))
 
-(deftest check-the-type-of-facts-list-item
+(deftest check-mock-the-type-of-facts-list-item
   (testing "Tests the mock facts list"
-           (def lists ((get-facts-map) :a))
+           (def lists ((get-mock-facts-map) :fact1))
            (is true (instance? (type lists) (type (list 'a 'b))))
    ))
+
+(deftest check-mock-the-tuple-under-the-map-list
+  (testing "Test the tuple"
+           (def lists ((get-mock-facts-map) :fact1))
+           (is true (instance? (type (get lists 1)) (type ['a])))
+           )
+  )
+;;https://repl.it/K4cK/4
+;;(deftest check-mock-fact
+;;  (testing "Test one fact"
+;;           )
+;;  )
